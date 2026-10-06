@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;margin-top:50px">
+
+<h2>BMI Calculator</h2>
+
+Height (cm): <input id="h" type="number"><br><br>
+Weight (kg): <input id="w" type="number"><br><br>
+<button onclick="calc()">Calculate</button><br><br>
+
+<div id="result"></div>
+
+<script>
+function calc(){
+ let h=document.getElementById('h').value;
+ let w=document.getElementById('w').value;
+ let res=document.getElementById('result');
+
+ if(h==''||w==''||h<=0||w<=0){res.innerHTML='Enter valid height & weight';return}
+
+ let hm=h/100;
+ let bmi=w/(hm*hm);
+ let bmiFix=bmi.toFixed(1);
+ let cat='';
+ if(bmi<18.5) cat='Underweight';
+ else if(bmi<24.9) cat='Normal weight';
+ else if(bmi<29.9) cat='Overweight';
+ else cat='Obesity';
+
+ res.innerHTML='Your BMI: '+bmiFix+'<br>Category: '+cat;
+}
+</script>
+</body>
+</html>
